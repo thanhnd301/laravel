@@ -11,10 +11,12 @@
 |
 */
 
+// Route default laravel
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
 
+// Route for adminlte
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
@@ -23,5 +25,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
     Route::resource('students', 'StudentController');
-
 });
+
+// Route for shopify app
+Route::get('/', function () {
+    return view('welcome');
+})->middleware(['auth.shop'])->name('home');
